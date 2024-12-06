@@ -1,0 +1,89 @@
+﻿<Window x:Class="ClientMessengerHttpUpdated.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientMessengerHttpUpdated"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="800" MinHeight="450" MinWidth="800" Background="#1f1e1f" WindowStyle="None" 
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Resize Window-->
+        <StackPanel x:Name="dragPanel" Grid.Row="0" Background="#333" Height="30" Orientation="Horizontal" HorizontalAlignment="Stretch">
+        </StackPanel>
+        
+        <!--Change window state buttons-->
+        <StackPanel Grid.Row="0" Background="#333" Height="30" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnMinimize"  Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Content="-"  FontSize="20"></Button>
+            <Button x:Name="btnMaximize"  Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Content="🗖"></Button>
+            <Button x:Name="btnClose" Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Content="X" ></Button>
+        </StackPanel>
+
+        <!--#region E-mail-->
+
+        <TextBlock x:Name="EmailError" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" FontSize="13" 
+            Text="Invalid!" Margin="0, 0, 115, 235" Foreground="Red" Visibility="Collapsed">
+        </TextBlock>
+        
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" FontSize="13" 
+                   Text="E-MAIL" Margin="0, 0, 118, 200" Foreground="#7c7e84">
+        </TextBlock>
+
+        <TextBox x:Name="Email" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="160" Height="30" Margin="0, 0, 0, 150" 
+                 Background="#343234" Foreground="#7c7e84" FontWeight="Bold" FontSize="14">
+        </TextBox>
+        
+        <!--#endregion-->
+
+        <!--#region Password-->
+
+        <TextBlock x:Name="PasswordError" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" FontSize="13" 
+            Text="Invalid!" Margin="0, 0, 115, 80" Foreground="Red" Visibility="Collapsed">
+        </TextBlock>
+
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" FontSize="14" 
+           Text="Password" Margin="0, 0, 101, 50" Foreground="#7c7e84">
+        </TextBlock>
+
+        <TextBox x:Name="Password" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="160" Height="30" Margin="0, 0, 0, 0" 
+                 Background="#343234" Foreground="#7c7e84" FontWeight="Bold" FontSize="14">
+        </TextBox>
+        
+        <!--#endregion-->
+        
+        <!--#region  Sign in/ Create acc-->
+
+        <TextBlock x:Name="SpamError" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" FontSize="13" 
+            Text="Calm down! Wait a second" Margin="0, 50, 0, 0" Foreground="Red" Visibility="Collapsed">
+        </TextBlock>
+
+        <Button x:Name="SignInButton" Grid.Row="1" Background="#343234" Foreground="#7c7e84" FontWeight="Bold" FontSize="14" Width="120"  Height="30"
+                Margin="0, 100, 0, 0" Content="Sign in">
+        </Button>
+
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" FontSize="13" 
+             Margin="10, 165, 7, 0" Foreground="#7c7e84">
+            No account?
+            <Hyperlink x:Name="HyperlinkAccCreation" Foreground="#0564c8">
+                Sign up now!
+                <Hyperlink.Style>
+            <Style TargetType="Hyperlink">
+                <Setter Property="TextDecorations" Value="{x:Null}" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="TextDecorations" Value="Underline" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Hyperlink.Style>
+            </Hyperlink>
+        </TextBlock>
+
+        <!--#endregion-->
+    </Grid>
+</Window>

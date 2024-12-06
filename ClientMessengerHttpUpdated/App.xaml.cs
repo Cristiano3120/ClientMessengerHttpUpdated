@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
 namespace ClientMessengerHttpUpdated
 {
@@ -9,6 +7,7 @@ namespace ClientMessengerHttpUpdated
     /// </summary>
     public partial class App : Application
     {
+        
     }
 
 }

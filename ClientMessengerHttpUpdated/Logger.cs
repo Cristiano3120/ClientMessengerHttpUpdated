@@ -78,7 +78,7 @@ namespace ClientMessengerHttpUpdated
 
         #region Exceptions
 
-        internal static void LogException(Exception ex)
+        internal static void LogException(Exception ex, bool playErrorSound = true)
         {
             StackTrace stackTrace = new(ex, true);
             StackFrame? stackFrame = null;
@@ -92,8 +92,12 @@ namespace ClientMessengerHttpUpdated
                 }
             }
 
-            Console.Beep();
-            Console.Beep();
+            if (playErrorSound)
+            {
+                Console.Beep();
+                Console.Beep();
+            }
+            
             if (stackFrame == null)
             {
                 _ = LogAsync(ConsoleColor.Red, $"ERROR: {ex.Message}");

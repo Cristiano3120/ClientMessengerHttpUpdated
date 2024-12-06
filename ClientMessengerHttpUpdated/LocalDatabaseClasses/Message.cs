@@ -1,4 +1,4 @@
-﻿namespace ClientMessengerHttpUpdated
+﻿namespace ClientMessengerHttpUpdated.LocalDatabaseClasses
 {
     internal sealed class Message
     {

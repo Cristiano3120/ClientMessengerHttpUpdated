@@ -7,7 +7,8 @@ namespace ClientMessengerHttpUpdated
         public MainWindow()
         {
             InitializeComponent();
-            Client.Start();
+            ClientUI.BindWindowStateButtons(btnClose, btnMinimize, btnMaximize, dragPanel);
+            _ = Client.Start();
         }
     }
 }

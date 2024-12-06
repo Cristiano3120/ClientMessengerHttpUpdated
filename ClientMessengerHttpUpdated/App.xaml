@@ -4,6 +4,57 @@
              xmlns:local="clr-namespace:ClientMessengerHttpUpdated"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="ComboBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton" Focusable="false"
+                                   Background="#343234" BorderBrush="#7c7e84"
+                                   ClickMode="Press" Foreground="White"
+                                   IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False" 
+                                       Content="{TemplateBinding SelectionBoxItem}" 
+                                       ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                       ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                       Margin="3,3,23,3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                            <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+                                <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="200">
+                                    <Border x:Name="DropDownBorder" Background="#343234" BorderBrush="#7c7e84" BorderThickness="1"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True" VerticalScrollBarVisibility="Hidden">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <!-- Trigger to open/close the dropdown when IsDropDownOpen changes -->
+                            <Trigger Property="IsDropDownOpen" Value="True">
+                                <Setter Property="Visibility" TargetName="Popup" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsDropDownOpen" Value="False">
+                                <Setter Property="Visibility" TargetName="Popup" Value="Collapsed"/>
+                            </Trigger>
+
+                            <!-- Trigger for when ComboBox is empty -->
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter Property="MinHeight" TargetName="DropDownBorder" Value="95"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#343234"/>
+            <Setter Property="Foreground" Value="#7c7e84"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
     </Application.Resources>
 </Application>
